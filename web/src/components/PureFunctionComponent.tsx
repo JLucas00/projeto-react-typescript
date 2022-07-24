@@ -1,3 +1,4 @@
+import React from 'react';
 /**
  * Archive: src/components/PureFunctionComponent.tsx
  *

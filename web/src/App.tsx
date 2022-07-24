@@ -1,5 +1,5 @@
 import './styles/global.css';
-
+import React from 'react';
 import { PureFunctionComponent } from './components/PureFunctionComponent';
 import { UseStateComponent } from './components/UseStateComponent';
 import { UseEffectComponent } from './components/UseEffectComponent';

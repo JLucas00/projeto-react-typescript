@@ -1,3 +1,4 @@
+import React from 'react';
 import { Component } from 'react';
 
 class ClassES6Component extends Component {
@@ -29,14 +30,6 @@ class ClassES6Component extends Component {
     );
   }
 }
-
-
-
-
-
-
-
-
 
 import { useState, useEffect } from 'react';
 
