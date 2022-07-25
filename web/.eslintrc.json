@@ -28,8 +28,8 @@
     "indent": ["error", 2],
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
-    //   "react/react-in-jsx-scope": "off"
+    "semi": ["error", "always"],
+    "react/react-in-jsx-scope": "off"
   }
   // Conjunto de regras que sobrescrevem as bases de regras ou determinam regras não contempladas por elas.
 }

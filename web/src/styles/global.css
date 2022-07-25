@@ -26,3 +26,15 @@ input,
 select {
   @apply p-0 leading-none m-0 focus:outline-none;
 }
+
+.btn-primary {
+  @apply bg-btn-primary-base hover:bg-btn-primary-hover;
+}
+
+.btn-secondary {
+  @apply bg-btn-secondary-base hover:bg-btn-secondary-hover;
+}
+
+.btn-cancel {
+  @apply bg-btn-cancel-base hover:bg-btn-cancel-hover;
+}
