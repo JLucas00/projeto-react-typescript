@@ -6,6 +6,7 @@ import GetExtract from "./getExtract";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import express from "express";
+import { DbTest } from "../clients/dao/postgres/teste";
 
 dotenv.config();
 const port = process.env.SERVER_PORT;
@@ -25,6 +26,12 @@ app.use(CreateTransfer);
 app.use(CreateWithdraw);
 app.use(GetExtract);
 
+new DbTest()
+  .execute()
+  .then(() => console.log("success"))
+  .catch((e) => {
+    console.log(e);
+  });
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
 });
