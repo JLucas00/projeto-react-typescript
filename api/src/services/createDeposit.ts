@@ -41,14 +41,7 @@ class CreateDepositService {
         throw new Error(`400: esta conta não pertence a este usuário`);
       }
 
-      const transationDay = new Date().getDate();
-      const transationMonth = new Date().getMonth() + 1;
-      const transationYear = new Date().getFullYear();
-      const currentDate = `${
-        transationYear < 10 ? "0" + transationYear : transationYear
-      }/${transationMonth < 10 ? "0" + transationMonth : transationMonth}/${
-        transationDay < 10 ? "0" + transationDay : transationDay
-      }`;
+      const currentDate = new Date().toLocaleString();
 
       const DepositTransation = await new this.transationsTable().insert({
         id: v4(),
@@ -69,22 +62,20 @@ class CreateDepositService {
         verifyAccountExists.id,
         Number(depositIdReceiver.balance) + Number(DepositTransation.value)
       );
-
+      console.log(updateBalance);
       const DepositTransationRate = await new this.transationsTable().insert({
         id: v4(),
-        date: `${new Date().getFullYear()}/${
-          new Date().getMonth() + 1
-        }/${new Date().getDate()}`,
+        date: new Date().toLocaleString(),
         value: validUserData.deposit.value * 0.01,
         type: "D-rate",
         originId: verifyAccountExists.id,
-        receiverId: "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        receiverId: "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
       });
       const depositIdReceiverBank = await new this.accountsTable().selectforId(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f"
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c"
       );
       const updateBalanceBank = await new this.accountsTable().updateBalance(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
         Number(depositIdReceiverBank.balance) +
           Number(DepositTransationRate.value)
       );

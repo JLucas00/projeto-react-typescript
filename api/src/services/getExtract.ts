@@ -53,7 +53,7 @@ class GetExtractService {
           owner: verifyUserExists.name,
           document: verifyUserExists.document,
           birthdate: verifyUserExists.birthdate,
-          balance: verifyAccountExists.balance,
+          balance: Number(verifyAccountExists.balance),
           transations: transations,
         },
         messages: [],

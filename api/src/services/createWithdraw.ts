@@ -50,14 +50,7 @@ class CreateWithDrawService {
         throw new Error(`400: esta conta não pertence a este usuário`);
       }
 
-      const transationDay = new Date().getDate();
-      const transationMonth = new Date().getMonth() + 1;
-      const transationYear = new Date().getFullYear();
-      const currentDate = `${
-        transationYear < 10 ? "0" + transationYear : transationYear
-      }/${transationMonth < 10 ? "0" + transationMonth : transationMonth}/${
-        transationDay < 10 ? "0" + transationDay : transationDay
-      }`;
+      const currentDate = new Date().toLocaleString();
 
       const withdrawIdOrigin = await new this.accountsTable().selectforId(
         verifyAccountExists.id
@@ -76,7 +69,7 @@ class CreateWithDrawService {
       const updateBalance = await new this.accountsTable().updateBalance(
         verifyAccountExists.id,
         Number(withdrawIdOrigin.balance) -
-          Number(validUserData.withdraw.value - 4)
+          (Number(validUserData.withdraw.value) + 4)
       );
 
       const withdrawTransation = await new this.transationsTable().insert({
@@ -91,19 +84,17 @@ class CreateWithDrawService {
 
       const withdrawTransationRate = await new this.transationsTable().insert({
         id: v4(),
-        date: `${new Date().getFullYear()}/${
-          new Date().getMonth() + 1
-        }/${new Date().getDate()}`,
+        date: new Date().toLocaleString(),
         value: 4,
         type: "W-rate",
         originId: verifyAccountExists.id,
-        receiverId: "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        receiverId: "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
       });
       const withdrawIdReceiverBank = await new this.accountsTable().selectforId(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f"
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c"
       );
       const updateBalanceBank = await new this.accountsTable().updateBalance(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
         Number(withdrawIdReceiverBank.balance) +
           Number(withdrawTransationRate.value)
       );

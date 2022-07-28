@@ -30,7 +30,6 @@ class CreateTransferService {
   private accountsTable = AccountsTable;
 
   public async execute(datas: TransferBody): Promise<APIResponse> {
-    console.log("entrou");
     try {
       const validUserData = new this.transferBodyValidator(datas);
       if (validUserData.errors) {
@@ -83,14 +82,7 @@ class CreateTransferService {
         );
       }
 
-      const transationDay = new Date().getDate();
-      const transationMonth = new Date().getMonth() + 1;
-      const transationYear = new Date().getFullYear();
-      const currentDate = `${
-        transationYear < 10 ? "0" + transationYear : transationYear
-      }/${transationMonth < 10 ? "0" + transationMonth : transationMonth}/${
-        transationDay < 10 ? "0" + transationDay : transationDay
-      }`;
+      const currentDate = new Date().toLocaleString();
 
       const withdrawIdOrigin = await new this.accountsTable().selectforId(
         verifyAccountOriginExists.id
@@ -105,7 +97,7 @@ class CreateTransferService {
         throw new Error(`400: saldo insuficente`);
       }
       const depositIdReceiver = await new this.accountsTable().selectforId(
-        verifyAccountOriginExists.id
+        verifyAccountReceiverExists.id
       );
       if (!depositIdReceiver) {
         throw new Error(`400: usuário de destino não existe`);
@@ -119,39 +111,36 @@ class CreateTransferService {
         originId: verifyAccountOriginExists.id,
         receiverId: verifyAccountReceiverExists.id,
       });
-      console.log(transferTransation);
-
       /* --------------- */
 
       const updateBalanceOrigin = await new this.accountsTable().updateBalance(
         verifyAccountOriginExists.id,
-        Number(withdrawIdOrigin.balance) - Number(transferTransation.value - 1)
+        Number(withdrawIdOrigin.balance) -
+          (Number(transferTransation.value) + 1)
       );
+      console.log("recebedor", verifyAccountReceiverExists);
       const updateBalanceReceiver =
         await new this.accountsTable().updateBalance(
           verifyAccountReceiverExists.id,
-          Number(withdrawIdOrigin.balance) + Number(transferTransation.value)
+          Number(depositIdReceiver.balance) + Number(transferTransation.value)
         );
 
       const transferTransationRate = await new this.transationsTable().insert({
         id: v4(),
-        date: `${new Date().getFullYear()}/${
-          new Date().getMonth() + 1
-        }/${new Date().getDate()}`,
+        date: new Date().toLocaleString(),
         value: 1,
         type: "T-rate",
         originId: verifyAccountOriginExists.id,
-        receiverId: "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        receiverId: "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
       });
       const withdrawIdReceiverBank = await new this.accountsTable().selectforId(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f"
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c"
       );
       const updateBalanceBank = await new this.accountsTable().updateBalance(
-        "6947a6c4-c467-45f8-afbe-5a522e5a850f",
+        "0567b44f-24f4-4dd6-bf35-1e0d2564ab3c",
         Number(withdrawIdReceiverBank.balance) +
           Number(transferTransationRate.value)
       );
-      console.log(updateBalanceBank);
       return {
         data: {
           id: transferTransation.id,

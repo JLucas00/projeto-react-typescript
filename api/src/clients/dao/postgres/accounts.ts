@@ -6,7 +6,6 @@ class AccountsTable extends PostgresDB {
   public async insert(account: Account): Promise<boolean> {
     try {
       this.client.connect();
-      console.log(1);
       const insertAccountQuery = `
         INSERT INTO accounts (
           id,
