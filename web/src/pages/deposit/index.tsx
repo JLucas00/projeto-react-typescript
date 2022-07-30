@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Modal } from '../../components/Modal';
 import { api } from '../../libs/api';
+import { Input } from '../../components/Input';
 
 /**
  * Archive: src/pages/Deposit.tsx
@@ -53,6 +54,9 @@ export const Deposit = () => {
           label="Abrir modal"
           onClick={() => setModal(true)}
         />
+
+        <Input placeholder="valor" />
+        <Input placeholder="senha" />
       </div>
     </>
   );
