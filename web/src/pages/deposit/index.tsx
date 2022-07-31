@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Modal } from '../../components/Modal';
-import { api } from '../../libs/api';
+import { getExtract } from '../../libs/api';
 
 /**
  * Archive: src/pages/Deposit.tsx
@@ -16,13 +16,15 @@ import { api } from '../../libs/api';
 export const Deposit = () => {
   const [modal, setModal] = useState(false);
 
-  async function handleDeposit() {
+  function handleDeposit() {
     try {
-      const result = await api.post('deposit', {
-        agency: '',
-        account: '',
-        value: '',
-      });
+      getExtract({
+        cpf: '12345678912',
+        agency: '5507',
+        verificationAgencyDigit: '3',
+        accountNumber: '607245',
+        verificationAccountDigit: '6',
+      }).then((response) => console.log(response.data.data.transations));
     } catch (error) {
       console.log(error);
     }

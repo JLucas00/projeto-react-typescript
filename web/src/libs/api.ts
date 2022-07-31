@@ -1,5 +1,77 @@
 import axios from 'axios';
-
-export const api = axios.create({
-  baseURL: 'localhost:3030/',
+const api = axios.create({
+  baseURL: 'http://localhost:8000/',
 });
+
+interface ExtractRequest {
+  cpf: string;
+  agency: string;
+  verificationAgencyDigit: string;
+  accountNumber: string;
+  verificationAccountDigit: string;
+}
+export async function getExtract(body: ExtractRequest) {
+  return await api.post('get-extract', body);
+}
+
+interface DepositRequest {
+  account: {
+    cpf: string;
+    agency: string;
+    verificationAgencyDigit: string;
+    accountNumber: string;
+    verificationAccountDigit: string;
+  };
+  value: number;
+}
+export async function postDeposit(body: DepositRequest) {
+  return await api.post('create-deposit', body);
+}
+
+interface WithdrawRequest {
+  account: {
+    cpf: string;
+    agency: string;
+    verificationAgencyDigit: string;
+    accountNumber: string;
+    verificationAccountDigit: string;
+    password: string;
+  };
+  value: number;
+}
+export async function postWithdraw(body: WithdrawRequest) {
+  return await api.post('create-withdraw', body);
+}
+
+interface TransferRequest {
+  accountOrigin: {
+    cpf: string;
+    agency: string;
+    verificationAgencyDigit: string;
+    accountNumber: string;
+    verificationAccountDigit: string;
+    password: string;
+  };
+  accountReceiver: {
+    cpf: string;
+    agency: string;
+    verificationAgencyDigit: string;
+    accountNumber: string;
+    verificationAccountDigit: string;
+  };
+  value: number;
+}
+export async function postTransfer(body: TransferRequest) {
+  return await api.post('create-transfer', body);
+}
+
+interface WithdrawRequest {
+  name: string;
+  email: string;
+  cpf: string;
+  password: string;
+  birthdate: string;
+}
+export async function postAccount(body: WithdrawRequest) {
+  return await api.post('create-withdraw', body);
+}

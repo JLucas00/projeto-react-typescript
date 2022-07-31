@@ -8,12 +8,21 @@ import dotenv from "dotenv";
 import express from "express";
 import { DbTest } from "../clients/dao/postgres/teste";
 
+import cors from "cors";
+
 dotenv.config();
 const port = process.env.SERVER_PORT;
 const app = express();
+const configCors = {
+  origin: ["http://localhost:5173/"],
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors());
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server ola");
 });
