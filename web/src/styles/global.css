@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url(profile.css);
+ */
 * {
   @apply m-0 p-0 box-border outline-none;
 }
@@ -37,4 +39,9 @@ select {
 
 .btn-cancel {
   @apply bg-btn-cancel-base hover:bg-btn-cancel-hover;
+}
+
+/* cabeçalho azul */
+.header-base {
+  background: #337782;
 }
