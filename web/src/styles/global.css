@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url(profile.css);
+ */
 * {
   @apply m-0 p-0 box-border outline-none;
 }
@@ -41,4 +43,18 @@ select {
 
 .input-color {
   @apply bg-input-base border-input-border placeholder-input-placeholder;
+/* cabeçalho azul */
+.header-base {
+  background: #337782;
+}
+
+.text-my-data {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+
+  color: #a2a2a2;
 }
