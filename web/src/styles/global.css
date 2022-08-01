@@ -45,3 +45,14 @@ select {
 .header-base {
   background: #337782;
 }
+
+.text-my-data {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+
+  color: #a2a2a2;
+}
