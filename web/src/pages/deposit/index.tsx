@@ -54,9 +54,6 @@ export const Deposit = () => {
           label="Abrir modal"
           onClick={() => setModal(true)}
         />
-
-        <Input placeholder="valor" />
-        <Input placeholder="senha" />
       </div>
     </>
   );
