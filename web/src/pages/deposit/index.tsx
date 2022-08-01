@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '../../components/Button';
 import { Modal } from '../../components/Modal';
 import { getExtract } from '../../libs/api';
+import { Input } from '../../components/Input';
 
 /**
  * Archive: src/pages/Deposit.tsx

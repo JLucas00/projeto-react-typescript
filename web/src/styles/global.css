@@ -38,3 +38,7 @@ select {
 .btn-cancel {
   @apply bg-btn-cancel-base hover:bg-btn-cancel-hover;
 }
+
+.input-color {
+  @apply bg-input-base border-input-border placeholder-input-placeholder;
+}
