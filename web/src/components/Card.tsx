@@ -27,7 +27,7 @@ export const Card = ({ title, icon, notify, children }: cardProps) => {
   const objTheme = {
     light: {
       icons: 'text-icon-light',
-      card: 'w-5/6 px-4 py-3 border rounded-lg bg-white',
+      card: 'w-5/6 px-4 py-3 rounded-lg bg-white',
     },
     dark: {
       icons: 'text-icon-dark',

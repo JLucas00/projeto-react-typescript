@@ -30,7 +30,7 @@ export const Extract = () => {
         <HeaderContent content_data={mockData} />
       </HeaderBase>
       <div className="h-2/3 w-full mt-7 flex items-center justify-center">
-        <Card title="Extrato de transações" icon={<Bank />}>
+        <Card title="Extrato de transações" icon={<Bank />} notify={true}>
           <ExtractCard />
         </Card>
       </div>

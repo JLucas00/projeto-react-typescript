@@ -72,7 +72,8 @@ select {
 .header-button-color {
   background-color: #75acb1;
 }
-.text-my-data {
+
+.text-my-data-dark {
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;
@@ -81,6 +82,17 @@ select {
   align-items: center;
 
   color: #a2a2a2;
+}
+
+.text-my-data-light {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+
+  display: flex;
+  align-items: center;
+
+  color: #727272;
 }
 
 .long {

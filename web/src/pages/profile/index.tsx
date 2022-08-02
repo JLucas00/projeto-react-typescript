@@ -1,10 +1,11 @@
 import { Bank } from 'phosphor-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card } from '../../components/Card';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderProfile } from '../../components/HeaderProfile';
 import { MyAccounts } from '../../components/MyAccounts';
 import { MyData } from '../../components/MyData';
+import { ModeContext } from '../../providers/ModeProvider';
 import { useUser } from '../../providers/UserProvider';
 
 /**
@@ -20,9 +21,21 @@ import { useUser } from '../../providers/UserProvider';
 export const Profile = () => {
   const { user } = useUser();
 
+  const useMode = useContext(ModeContext);
+
+  const theme = useMode.theme;
+  const objTheme = {
+    light: {
+      profile: 'h-screen w-full flex flex-col bg-body-light-bg',
+    },
+    dark: {
+      profile: 'h-screen w-full flex flex-col bg-body-dark',
+    },
+  };
+
   return (
     <>
-      <div className="h-screen w-full flex flex-col">
+      <div className={objTheme[theme].profile}>
         <HeaderBase>
           <HeaderProfile name="Orlando" />
         </HeaderBase>
