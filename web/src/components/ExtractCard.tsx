@@ -7,14 +7,15 @@ export const ExtractCard = () => {
   const theme = useMode.theme;
   const objTheme = {
     light: {
-      icons: 'text-icon-light',
-      card: 'w-5/6 px-4 py-3 border rounded-lg bg-white',
+      extract:
+        'w-full p-1 flex flex-col justify-start gap-y-1 rounded bg-body-light-100',
+      textMyData: 'text-my-data-light',
     },
     dark: {
-      icons: 'text-icon-dark',
-      card: 'w-5/6 px-4 py-3 border rounded-lg border-btn-secondary-base bg-body-dark',
+      extract: 'w-full p-1 flex flex-col justify-start gap-y-1',
+      textMyData: 'text-my-data-dark',
     },
   };
 
-  return <div className="w-5/6 h-10 body-color rounded"></div>;
+  return <div className={objTheme[theme].extract}></div>;
 };

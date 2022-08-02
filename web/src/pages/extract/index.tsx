@@ -8,11 +8,12 @@
  * Author: Rey
  */
 import { Bank } from 'phosphor-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Card } from '../../components/Card';
 import { ExtractCard } from '../../components/ExtractCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
+import { ModeContext } from '../../providers/ModeProvider';
 import { getExtract } from '../../libs/api';
 
 const mockData = {
@@ -25,6 +26,17 @@ const mockData = {
 };
 
 export const Extract = () => {
+  const useMode = useContext(ModeContext);
+
+  const theme = useMode.theme;
+  const objTheme = {
+    light: {
+      body: 'h-screen w-full flex flex-col bg-body-light-bg',
+    },
+    dark: {
+      body: 'h-screen w-full flex flex-col bg-body-dark',
+    },
+  };
   function handleExtract() {
     try {
       getExtract({
@@ -40,7 +52,7 @@ export const Extract = () => {
   }
 
   return (
-    <div className="h-screen w-full flex flex-col">
+    <div className={objTheme[theme].body}>
       <HeaderBase>
         <HeaderContent content_data={mockData} handleData={handleExtract} />
       </HeaderBase>

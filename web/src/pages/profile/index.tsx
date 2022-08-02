@@ -26,16 +26,16 @@ export const Profile = () => {
   const theme = useMode.theme;
   const objTheme = {
     light: {
-      profile: 'h-screen w-full flex flex-col bg-body-light-bg',
+      body: 'h-screen w-full flex flex-col bg-body-light-bg',
     },
     dark: {
-      profile: 'h-screen w-full flex flex-col bg-body-dark',
+      body: 'h-screen w-full flex flex-col bg-body-dark',
     },
   };
 
   return (
     <>
-      <div className={objTheme[theme].profile}>
+      <div className={objTheme[theme].body}>
         <HeaderBase>
           <HeaderProfile name="Orlando" />
         </HeaderBase>
@@ -46,7 +46,7 @@ export const Profile = () => {
             notify={false}
           >
             <MyData
-              name="Yeté Abunã Marques Labarca"
+              name="Orlando"
               birthdate="09/06/2001"
               document="499.649.058-66"
             />
