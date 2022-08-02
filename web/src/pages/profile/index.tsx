@@ -50,6 +50,3 @@ export const Profile = () => {
     </>
   );
 };
-
-{
-}
