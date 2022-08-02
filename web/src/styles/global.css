@@ -100,7 +100,7 @@ select {
 }
 
 .short {
-  @apply w-2/3;
+  @apply w-28;
 }
 
 .input-label {

@@ -13,22 +13,26 @@ export const DepositWithdrawCard = ({ title, buttonLabel }: cardProps) => {
       <h1>Dados para {title}</h1>
       <div className="flex justify-between mt-2">
         <div className="w-full">
-          <Input placeholder="Agência" inputType="short" />
+          <Input placeholder="Agência" inputType="short" disabled={true} />
           <p className="input-label">Agência</p>
         </div>
         <div>
-          <Input placeholder="Conta" inputType="short" />
+          <Input placeholder="Conta" inputType="short" disabled={true} />
           <p className="input-label">Conta</p>
         </div>
       </div>
       <div className="mt-5">
-        <Input placeholder="Valor" inputType="long" />
+        <Input placeholder="Valor" inputType="long" disabled={false} />
       </div>
       <div className="mt-5">
-        <Input placeholder="Senha" inputType="long" />
+        <Input placeholder="Senha" inputType="long" disabled={false} />
       </div>
       <div className="mt-5">
-        <Button category="primary" label={buttonLabel} />
+        <Button
+          category="primary"
+          label={buttonLabel}
+          onClick={() => console.log('Saque')}
+        />
       </div>
     </div>
   );

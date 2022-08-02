@@ -1,10 +1,11 @@
 import { UploadSimple } from 'phosphor-react';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card } from '../../components/Card';
 import { DepositWithdrawCard } from '../../components/DepositWithdrawCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
 import { getExtract } from '../../libs/api';
+import { ModeContext } from '../../providers/ModeProvider';
 
 /**
  * Archive: src/pages/Deposit.tsx
@@ -41,9 +42,20 @@ export const Deposit = () => {
     account_verification_code: '3',
     balance: '132.759,30',
   };
+  const useMode = useContext(ModeContext);
+
+  const theme = useMode.theme;
+  const objTheme = {
+    light: {
+      body: 'h-screen w-full flex flex-col bg-body-light-bg',
+    },
+    dark: {
+      body: 'h-screen w-full flex flex-col bg-body-dark',
+    },
+  };
 
   return (
-    <div className="h-screen w-full flex flex-col">
+    <div className={objTheme[theme].body}>
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
