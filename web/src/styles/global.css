@@ -42,3 +42,27 @@ select {
 .input-color {
   @apply bg-input-base border-input-border placeholder-input-placeholder;
 }
+
+.header-button {
+  @apply w-14 h-14 header-button-color flex items-center justify-center text-white;
+}
+
+.balance-color {
+  color: #338896;
+}
+
+.currency-color {
+  color: #3fa7b8;
+}
+
+.header-base {
+  background: #337782;
+}
+
+.header-gold {
+  @apply text-header-gold;
+}
+
+.header-button-color {
+  background-color: #75acb1;
+}

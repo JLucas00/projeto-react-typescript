@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button } from '../../components/Button';
+import { HeaderBase } from '../../components/HeaderBase';
+import { HeaderContent } from '../../components/HeaderContent';
 import { Modal } from '../../components/Modal';
 import { getExtract } from '../../libs/api';
-import { Input } from '../../components/Input';
 
 /**
  * Archive: src/pages/Deposit.tsx
@@ -31,32 +32,20 @@ export const Deposit = () => {
     }
   }
 
+  const mockData = {
+    username: 'Dhensen',
+    agency_number: '1510',
+    agency_verification_code: '5',
+    account_number: '95785',
+    account_verification_code: '3',
+    balance: '132.759,30',
+  };
+
   return (
-    <>
-      {modal && (
-        <Modal
-          title="Depósito"
-          setModal={setModal}
-          handleConfirmModal={handleDeposit}
-        />
-      )}
-      <div className="flex flex-col gap-5">
-        <Button
-          category="primary"
-          label="Abrir modal"
-          onClick={() => setModal(true)}
-        />
-        <Button
-          category="secondary"
-          label="Abrir modal"
-          onClick={() => setModal(true)}
-        />
-        <Button
-          category="cancel"
-          label="Abrir modal"
-          onClick={() => setModal(true)}
-        />
-      </div>
-    </>
+    <div className="h-screen w-full flex flex-col">
+      <HeaderBase>
+        <HeaderContent content_data={mockData} />
+      </HeaderBase>
+    </div>
   );
 };

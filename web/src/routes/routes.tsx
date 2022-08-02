@@ -28,7 +28,7 @@ const Public = ({ children }: ChildrenTypes) => {
   const { user } = useUser();
 
   if (user) {
-    return <Navigate to="/deposit" />;
+    return <Navigate to="/extract" />;
   }
 
   return children;
@@ -62,7 +62,7 @@ export const Router = () => (
       }
     />
     <Route
-      path="/Transfer"
+      path="/transfer"
       element={
         <Private>
           <Transfer />
