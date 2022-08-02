@@ -19,9 +19,13 @@ interface headerContentProps {
     account_verification_code: string;
     balance: string;
   };
+  handleData?: () => void;
 }
 
-export const HeaderContent = ({ content_data }: headerContentProps) => {
+export const HeaderContent = ({
+  content_data,
+  handleData,
+}: headerContentProps) => {
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full h-min mt-5 flex justify-around text-white items-center">
@@ -32,7 +36,7 @@ export const HeaderContent = ({ content_data }: headerContentProps) => {
       </div>
 
       <div className="w-3/4 flex justify-around mt-5">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={handleData}>
           <Link to="/extract" className="header-button">
             <Bank className="w-8 h-8" />
           </Link>
