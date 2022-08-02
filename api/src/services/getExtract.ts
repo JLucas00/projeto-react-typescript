@@ -66,6 +66,9 @@ class GetExtractService {
       }
 
       const trasationsFormated = transations.map((item: any) => {
+        const origin = verifyUserAccount(item.origin_account_id);
+        const destination = verifyUserAccount(item.destination_account_id);
+
         return {
           origin_account_id: verifyUserAccount(item.origin_account_id),
           destination_account_id: verifyUserAccount(
