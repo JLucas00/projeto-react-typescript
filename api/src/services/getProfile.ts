@@ -6,7 +6,7 @@ import { UsersTable } from "../clients/dao/postgres/users";
 import { AccountsTable } from "../clients/dao/postgres/accounts";
 import { TransationsTable } from "../clients/dao/postgres/transations";
 
-class GetExtractService {
+class GetProfileService {
   private extractDataValidator = ExtractDataValidator;
 
   private usersTable = UsersTable;
@@ -70,16 +70,7 @@ class GetExtractService {
       );
       return {
         data: {
-          agencyNumber: verifyAccountExists.agency_number,
-          agencyVerificationCode: verifyAccountExists.agency_verification_code,
-          accountNumber: verifyAccountExists.account_number,
-          accountVerificationCode:
-            verifyAccountExists.account_verification_code,
-          owner: verifyUserExists.name,
-          document: verifyUserExists.document,
-          birthdate: verifyUserExists.birthdate,
-          balance: Number(verifyAccountExists.balance),
-          transations: transations,
+          accountUsers: accountUsers,
         },
         messages: [],
       } as APIResponse;
@@ -93,4 +84,4 @@ class GetExtractService {
   }
 }
 
-export { GetExtractService };
+export { GetProfileService };
