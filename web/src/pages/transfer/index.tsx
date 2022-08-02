@@ -7,9 +7,12 @@
  *
  * Author: Rey
  */
+import { ArrowsLeftRight } from 'phosphor-react';
 import React from 'react';
+import { Card } from '../../components/Card';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
+import { TransferCard } from '../../components/TransferCard';
 
 const mockData = {
   username: 'Dhensen',
@@ -26,6 +29,11 @@ export const Transfer = () => {
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
+      <div className="h-2/3 w-full mt-7 flex items-center justify-center">
+        <Card title="Transferência" icon={<ArrowsLeftRight />}>
+          <TransferCard />
+        </Card>
+      </div>
     </div>
   );
 };

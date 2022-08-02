@@ -1,8 +1,9 @@
+import { UploadSimple } from 'phosphor-react';
 import React, { useState } from 'react';
-import { Button } from '../../components/Button';
+import { Card } from '../../components/Card';
+import { DepositWithdrawCard } from '../../components/DepositWithdrawCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
-import { Modal } from '../../components/Modal';
 import { getExtract } from '../../libs/api';
 
 /**
@@ -46,6 +47,11 @@ export const Deposit = () => {
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
+      <div className="h-2/3 w-full mt-7 flex items-center justify-center">
+        <Card title="Depósito" icon={<UploadSimple />}>
+          <DepositWithdrawCard title="depósito" buttonLabel="Depositar" />
+        </Card>
+      </div>
     </div>
   );
 };

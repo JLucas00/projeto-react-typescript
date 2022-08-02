@@ -19,9 +19,10 @@ export const ModeContext = createContext<ContextTypes>({
 });
 
 export const ModeProvider = ({ children }: ProviderTypes) => {
-  const [mode, setMode] = useState(true);
+  //começar no modo light
+  const [mode, setMode] = useState(false);
 
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   function toggle() {
     if (mode) {

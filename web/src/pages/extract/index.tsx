@@ -7,7 +7,10 @@
  *
  * Author: Rey
  */
+import { Bank } from 'phosphor-react';
 import React from 'react';
+import { Card } from '../../components/Card';
+import { ExtractCard } from '../../components/ExtractCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
 
@@ -26,6 +29,11 @@ export const Extract = () => {
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
+      <div className="h-2/3 w-full mt-7 flex items-center justify-center">
+        <Card title="Extrato de transações" icon={<Bank />}>
+          <ExtractCard />
+        </Card>
+      </div>
     </div>
   );
 };

@@ -58,7 +58,7 @@ export const HeaderContent = ({ content_data }: headerContentProps) => {
         </div>
       </div>
 
-      <div className="w-3/4 h-20 bg-white mt-40 absolute rounded-lg shadow-lg">
+      <div className="w-5/6 h-20 bg-white mt-40 absolute rounded-lg shadow-lg">
         <div className="h-min flex items-center justify-around mt-1 header-gold text-sm">
           <p>
             Agência {content_data.agency_number}-
