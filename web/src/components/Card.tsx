@@ -1,5 +1,6 @@
 import { Bell, BellRinging } from 'phosphor-react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { ModeContext } from '../providers/ModeProvider';
 
 type cardProps = {
   title: string;
@@ -20,8 +21,22 @@ export const Card = ({ title, icon, notify, children }: cardProps) => {
     setNotification(!notification);
   };
 
+  const useMode = useContext(ModeContext);
+
+  const theme = useMode.theme;
+  const objTheme = {
+    light: {
+      icons: 'text-icon-light',
+      card: "w-5/6 px-4 py-3 border rounded-lg bg-white"
+    },
+    dark: {
+      icons: 'text-icon-dark',
+      card: "w-5/6 px-4 py-3 border rounded-lg border-btn-secondary-base bg-body-dark"
+    },
+  };
+
   return (
-    <div className="w-5/6 px-4 py-3 border rounded-lg border-btn-secondary-base bg-body-dark">
+    <div className={objTheme[theme].card}>
       <div className="h-5 w-full flex">
         {icon}
         <h1 className="w-full text-left pl-2 text-sm flex items-center text-header-gold">

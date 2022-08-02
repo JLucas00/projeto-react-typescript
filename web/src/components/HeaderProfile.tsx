@@ -1,6 +1,7 @@
 import { ArrowLeft, Moon, Sun, ToggleLeft, ToggleRight } from 'phosphor-react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ModeContext } from '../providers/ModeProvider';
 
 type headerProps = {
   img?: string;
@@ -9,16 +10,7 @@ type headerProps = {
 
 export const HeaderProfile = ({ img, name }: headerProps) => {
   const navigate = useNavigate();
-  const [mode, setMode] = useState(false);
-
-  const btnMode = () => {
-    if (mode) {
-      console.log('Modo Noturno');
-    } else {
-      console.log('Modo Dia');
-    }
-    setMode(!mode);
-  };
+  const useMode = useContext(ModeContext);
 
   return (
     <>
@@ -28,13 +20,13 @@ export const HeaderProfile = ({ img, name }: headerProps) => {
             <ArrowLeft className="text-icon-light" size={20} />
           </button>
           <div className="flex">
-            {mode ? (
+            {useMode.mode ? (
               <Moon className="text-body-dark" size={20} />
             ) : (
               <Sun className="text-icon-light" size={20} />
             )}
-            <button className="ml-1" onClick={btnMode}>
-              {mode ? (
+            <button className="ml-1" onClick={useMode.toggle}>
+              {useMode.mode ? (
                 <ToggleLeft className="text-body-dark" size={20} />
               ) : (
                 <ToggleRight className="text-icon-light" size={20} />

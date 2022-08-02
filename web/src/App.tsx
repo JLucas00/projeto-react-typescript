@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { UserProvider } from './providers/UserProvider';
+import { ModeProvider } from './providers/ModeProvider';
 import { Router } from './routes/routes';
 import './styles/global.css';
 
@@ -18,9 +19,11 @@ import './styles/global.css';
 export const App = () => {
   return (
     <UserProvider>
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
+      <ModeProvider>
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
+      </ModeProvider>
     </UserProvider>
   );
 };
