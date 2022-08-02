@@ -20,7 +20,6 @@ export const HeaderProfile = ({ img, name }: headerProps) => {
             <ArrowLeft className="text-icon-light" size={20} />
           </button>
           <div className="flex">
-            {console.log(useMode.mode)}
             {useMode.mode ? (
               <Moon className="text-body-dark" size={20} />
             ) : (
