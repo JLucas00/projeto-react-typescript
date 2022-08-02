@@ -8,6 +8,7 @@ import {
   CaretDown,
   Eye,
 } from 'phosphor-react';
+import { Link } from 'react-router-dom';
 
 interface headerContentProps {
   content_data: {
@@ -25,34 +26,38 @@ export const HeaderContent = ({ content_data }: headerContentProps) => {
     <div className="w-full flex flex-col items-center">
       <div className="w-full h-min mt-5 flex justify-around text-white items-center">
         <h1 className="text-xl">Bem-vindo, {content_data.username}!</h1>
-        <UserCircle className="w-7 h-7" />
+        <Link to="/profile">
+          <UserCircle className="w-7 h-7" />
+        </Link>
       </div>
+
       <div className="w-3/4 flex justify-around mt-5">
         <div className="flex flex-col items-center">
-          <button className="header-button">
+          <Link to="/extract" className="header-button">
             <Bank className="w-8 h-8" />
-          </button>
+          </Link>
           <h3 className="text-xs text-white mt-1">Extrato</h3>
         </div>
         <div className="flex flex-col items-center">
-          <button className="header-button">
+          <Link to="/transfer" className="header-button">
             <ArrowsLeftRight className="w-8 h-8" />
-          </button>
+          </Link>
           <h3 className="text-xs text-white mt-1">Transferir</h3>
         </div>
         <div className="flex flex-col items-center">
-          <button className="header-button">
+          <Link to="/deposit" className="header-button">
             <UploadSimple className="w-8 h-8" />
-          </button>
+          </Link>
           <h3 className="text-xs text-white mt-1">Depositar</h3>
         </div>
         <div className="flex flex-col items-center">
-          <button className="header-button">
+          <Link to="/withdraw" className="header-button">
             <DownloadSimple className="w-8 h-8" />
-          </button>
+          </Link>
           <h3 className="text-xs text-white mt-1">Sacar</h3>
         </div>
       </div>
+
       <div className="w-3/4 h-20 bg-white mt-40 absolute rounded-lg shadow-lg">
         <div className="h-min flex items-center justify-around mt-1 header-gold text-sm">
           <p>
