@@ -6,7 +6,7 @@ import { UsersTable } from "../clients/dao/postgres/users";
 import { AccountsTable } from "../clients/dao/postgres/accounts";
 import { TransationsTable } from "../clients/dao/postgres/transations";
 
-class GetExtractService {
+class GetProfileService {
   private extractDataValidator = ExtractDataValidator;
 
   private usersTable = UsersTable;
@@ -62,35 +62,12 @@ class GetExtractService {
             }).length !== 0
           );
         });
-        return verify[0];
+        return verify;
       }
 
-      const trasationsFormated = transations.map((item: any) => {
-        const origin = verifyUserAccount(item.origin_account_id);
-        const destination = verifyUserAccount(item.destination_account_id);
-
-        return {
-          origin_account_id: verifyUserAccount(item.origin_account_id),
-          destination_account_id: verifyUserAccount(
-            item.destination_account_id
-          ),
-          ...item,
-        };
-      });
-
+      const extractUser = verifyUserAccount(verifyAccountExists.id);
       return {
-        data: {
-          agencyNumber: verifyAccountExists.agency_number,
-          agencyVerificationCode: verifyAccountExists.agency_verification_code,
-          accountNumber: verifyAccountExists.account_number,
-          accountVerificationCode:
-            verifyAccountExists.account_verification_code,
-          owner: verifyUserExists.name,
-          document: verifyUserExists.document,
-          birthdate: verifyUserExists.birthdate,
-          balance: Number(verifyAccountExists.balance),
-          transations: trasationsFormated,
-        },
+        data: extractUser[0],
         messages: [],
       } as APIResponse;
     } catch (error) {
@@ -103,4 +80,4 @@ class GetExtractService {
   }
 }
 
-export { GetExtractService };
+export { GetProfileService };

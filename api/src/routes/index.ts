@@ -3,6 +3,7 @@ import CreateDeposit from "./createDeposit";
 import CreateTransfer from "./createTransfer";
 import CreateWithdraw from "./createWithdraw";
 import GetExtract from "./getExtract";
+import GetProfile from "./getProfile";
 import { Request, Response } from "express";
 import dotenv from "dotenv";
 import express from "express";
@@ -34,6 +35,7 @@ app.use(CreateDeposit);
 app.use(CreateTransfer);
 app.use(CreateWithdraw);
 app.use(GetExtract);
+app.use(GetProfile);
 
 new DbTest()
   .execute()

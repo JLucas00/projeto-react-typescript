@@ -75,3 +75,14 @@ interface WithdrawRequest {
 export async function postAccount(body: WithdrawRequest) {
   return await api.post('create-withdraw', body);
 }
+
+interface ProfileRequest {
+  cpf: string;
+  agency: string;
+  verificationAgencyDigit: string;
+  accountNumber: string;
+  verificationAccountDigit: string;
+}
+export async function getProfile(body: ProfileRequest) {
+  return await api.post('get-profile', body);
+}
