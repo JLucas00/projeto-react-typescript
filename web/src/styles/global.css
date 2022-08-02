@@ -43,6 +43,8 @@ select {
 
 .input-color {
   @apply bg-input-base border-input-border placeholder-input-placeholder;
+}
+
 /* cabeçalho azul */
 .header-base {
   background: #337782;
