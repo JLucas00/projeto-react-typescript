@@ -1,15 +1,15 @@
 import { Bell, BellRinging } from 'phosphor-react';
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ModeContext } from '../providers/ModeProvider';
 
 type cardProps = {
   title: string;
   icon: JSX.Element;
   notify?: boolean;
-  children: JSX.Element;
+  content: JSX.Element;
 };
 
-export const Card = ({ title, icon, notify, children }: cardProps) => {
+export const Card = ({ title, icon, notify, content }: cardProps) => {
   const [notification, setNotification] = useState(false);
 
   const funcNotification = () => {
@@ -27,17 +27,17 @@ export const Card = ({ title, icon, notify, children }: cardProps) => {
   const objTheme = {
     light: {
       icons: 'text-icon-light',
-      card: "w-5/6 px-4 py-3 border rounded-lg bg-white"
+      card: 'w-5/6 px-4 py-3 border rounded-lg bg-white',
     },
     dark: {
       icons: 'text-icon-dark',
-      card: "w-5/6 px-4 py-3 border rounded-lg border-btn-secondary-base bg-body-dark"
+      card: 'w-5/6 px-4 py-3 border rounded-lg border-btn-secondary-base bg-body-dark',
     },
   };
 
   return (
     <div className={objTheme[theme].card}>
-      <div className="h-5 w-full flex">
+      <div className="h-5 w-full flex text-header-gold">
         {icon}
         <h1 className="w-full text-left pl-2 text-sm flex items-center text-header-gold">
           {title}
@@ -54,7 +54,7 @@ export const Card = ({ title, icon, notify, children }: cardProps) => {
           false
         )}
       </div>
-      <div className="mt-6">{children}</div>
+      <div className="mt-6">{content}</div>
     </div>
   );
 };
