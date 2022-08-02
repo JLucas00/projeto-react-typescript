@@ -86,3 +86,10 @@ interface ProfileRequest {
 export async function getProfile(body: ProfileRequest) {
   return await api.post('get-profile', body);
 }
+
+interface ProofRequest {
+  id: string;
+}
+export async function getProof(body: ProofRequest) {
+  return await api.post('get-proof', body);
+}

@@ -56,27 +56,14 @@ class GetExtractService {
 
       function verifyUserAccount(account: any) {
         const verify: any = accountUsers?.filter((item) => {
-          return (
-            item.accounts?.filter((element) => {
-              return element.id === account;
-            }).length !== 0
-          );
+          const acc: any = item.accounts?.filter((element) => {
+            return element.id === account;
+          });
+          return acc.length !== 0;
         });
+
         return verify[0];
       }
-
-      const trasationsFormated = transations.map((item: any) => {
-        const origin = verifyUserAccount(item.origin_account_id);
-        const destination = verifyUserAccount(item.destination_account_id);
-
-        return {
-          origin_account_id: verifyUserAccount(item.origin_account_id),
-          destination_account_id: verifyUserAccount(
-            item.destination_account_id
-          ),
-          ...item,
-        };
-      });
 
       return {
         data: {
@@ -89,7 +76,7 @@ class GetExtractService {
           document: verifyUserExists.document,
           birthdate: verifyUserExists.birthdate,
           balance: Number(verifyAccountExists.balance),
-          transations: trasationsFormated,
+          transations: transations,
         },
         messages: [],
       } as APIResponse;

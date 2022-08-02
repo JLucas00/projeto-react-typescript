@@ -116,6 +116,27 @@ class TransationsTable extends PostgresDB {
       throw new Error("503: service temporarily unavailable");
     }
   }
+  public async select(id: string): Promise<any> {
+    try {
+      this.client.connect();
+
+      const selectTransationQuery = `
+        SELECT * FROM transations WHERE id = $1
+    `;
+
+      const result = await this.client.query(selectTransationQuery, [id]);
+
+      this.client.end();
+
+      if (result.rows.length !== 0) {
+        return result.rows[0];
+      }
+      return [];
+    } catch (error) {
+      this.client.end();
+      throw new Error("503: service temporarily unavailable");
+    }
+  }
 }
 
 export { TransationsTable };
