@@ -62,12 +62,19 @@ class GetExtractService {
             }).length !== 0
           );
         });
-        return verify;
+        return verify[0];
       }
 
-      const extractUser = verifyUserAccount(
-        "61c2f971-0d37-42a0-9cec-be41597e24ad"
-      );
+      const trasationsFormated = transations.map((item: any) => {
+        return {
+          origin_account_id: verifyUserAccount(item.origin_account_id),
+          destination_account_id: verifyUserAccount(
+            item.destination_account_id
+          ),
+          ...item,
+        };
+      });
+
       return {
         data: {
           agencyNumber: verifyAccountExists.agency_number,
@@ -79,7 +86,7 @@ class GetExtractService {
           document: verifyUserExists.document,
           birthdate: verifyUserExists.birthdate,
           balance: Number(verifyAccountExists.balance),
-          transations: transations,
+          transations: trasationsFormated,
         },
         messages: [],
       } as APIResponse;

@@ -65,13 +65,9 @@ class GetProfileService {
         return verify;
       }
 
-      const extractUser = verifyUserAccount(
-        "61c2f971-0d37-42a0-9cec-be41597e24ad"
-      );
+      const extractUser = verifyUserAccount(verifyAccountExists.id);
       return {
-        data: {
-          accountUsers: accountUsers,
-        },
+        data: extractUser[0],
         messages: [],
       } as APIResponse;
     } catch (error) {
