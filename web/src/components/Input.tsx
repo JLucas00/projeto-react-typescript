@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 
 interface inputProps {
   placeholder: string;
+  inputType: 'long' | 'short';
 }
 
-export const Input = ({ placeholder }: inputProps) => {
+export const Input = ({ placeholder, inputType }: inputProps) => {
   const [inputValue, setInputValue] = useState('');
   console.log(inputValue);
 
@@ -12,7 +13,8 @@ export const Input = ({ placeholder }: inputProps) => {
     <input
       placeholder={placeholder}
       type="text"
-      className={'h-9 w-45 p-2 rounded border input-color'}
+      // eslint-disable-next-line quotes
+      className={`h-9 ${inputType} p-2 rounded border input-color`}
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
     />

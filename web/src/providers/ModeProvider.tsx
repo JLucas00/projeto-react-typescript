@@ -3,19 +3,26 @@ import React, { ReactNode, createContext, useState } from 'react';
 interface ContextTypes {
   toggle: any;
   mode: boolean;
-  theme: string;
+  theme: 'dark' | 'light';
 }
 
 interface ProviderTypes {
   children: ReactNode;
 }
 
-export const ModeContext = createContext<Partial<ContextTypes>>({});
+export const ModeContext = createContext<ContextTypes>({
+  toggle: () => {
+    console.log('Start ModeProvider dark');
+  },
+  mode: true,
+  theme: 'dark',
+});
 
 export const ModeProvider = ({ children }: ProviderTypes) => {
+  //começar no modo light
   const [mode, setMode] = useState(false);
 
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
 
   function toggle() {
     if (mode) {

@@ -26,7 +26,7 @@ export const Button = ({
   category,
 }: PropTypes) => (
   <button
-    className={`h-10 px-3 text-btn-text rounded btn-${category} ${className}`}
+    className={`w-full h-10 px-3 text-btn-text rounded btn-${category} ${className}`}
     type={type}
     onClick={onClick}
   >

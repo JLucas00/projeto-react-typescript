@@ -7,7 +7,10 @@
  *
  * Author: Rey
  */
+import { DownloadSimple } from 'phosphor-react';
 import React from 'react';
+import { Card } from '../../components/Card';
+import { DepositWithdrawCard } from '../../components/DepositWithdrawCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
 
@@ -26,6 +29,13 @@ export const Withdraw = () => {
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
+      <div className="h-2/3 w-full mt-7 flex items-center justify-center">
+        <Card
+          title="Depósito"
+          icon={<DownloadSimple />}
+          content={<DepositWithdrawCard title="saque" buttonLabel="Sacar" />}
+        />
+      </div>
     </div>
   );
 };

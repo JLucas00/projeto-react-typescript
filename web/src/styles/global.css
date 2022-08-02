@@ -49,6 +49,10 @@ select {
   @apply w-14 h-14 header-button-color flex items-center justify-center text-white;
 }
 
+.body-color {
+  @apply bg-body-light-100;
+}
+
 .balance-color {
   color: #338896;
 }
@@ -77,4 +81,16 @@ select {
   align-items: center;
 
   color: #a2a2a2;
+}
+
+.long {
+  @apply w-full;
+}
+
+.short {
+  @apply w-2/3;
+}
+
+.input-label {
+  @apply text-sm font-extralight;
 }
