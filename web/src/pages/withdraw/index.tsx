@@ -31,7 +31,7 @@ export const Withdraw = () => {
       </HeaderBase>
       <div className="h-2/3 w-full mt-7 flex items-center justify-center">
         <Card
-          title="Depósito"
+          title="Saque"
           icon={<DownloadSimple />}
           content={<DepositWithdrawCard title="saque" buttonLabel="Sacar" />}
         />
