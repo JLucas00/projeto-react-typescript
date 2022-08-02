@@ -65,12 +65,13 @@ class GetProofService {
         verifyIdExists.destination.user_name = destinationUser.name;
       }
 
-      /* const verifyAccountExists = await new this.accountsTable().selectforId(
-        verifyIdExists.
-      );
-      if (!verifyAccountExists) {
-        throw new Error(`400: conta não existe`);
-      } */
+      if (
+        verifyIdExists.type === "deposit" ||
+        verifyIdExists.type === "withdraw"
+      ) {
+        delete verifyIdExists.origin_account_id;
+        delete verifyIdExists.destination_account_id;
+      }
 
       return {
         data: verifyIdExists,
