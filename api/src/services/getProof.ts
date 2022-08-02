@@ -63,12 +63,7 @@ class GetProofService {
         verifyIdExists.origin.user_name = originUser.name;
         verifyIdExists.destination = destinationAccount;
         verifyIdExists.destination.user_name = destinationUser.name;
-      }
-
-      if (
-        verifyIdExists.type === "deposit" ||
-        verifyIdExists.type === "withdraw"
-      ) {
+      } else {
         delete verifyIdExists.origin_account_id;
         delete verifyIdExists.destination_account_id;
       }
