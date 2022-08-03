@@ -15,7 +15,7 @@ export const Input = ({ placeholder, inputType, disabled }: inputProps) => {
       placeholder={placeholder}
       type="text"
       // eslint-disable-next-line quotes
-      className={`h-8 ${inputType} p-2 rounded ${
+      className={`h-8 ${inputType} p-2 rounded text-title text-input-placeholder ${
         disabled ? 'bg-input-readonly' : 'border bg-input-base'
       } `}
       value={inputValue}

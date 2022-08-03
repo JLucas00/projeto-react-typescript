@@ -47,7 +47,7 @@ export const Deposit = () => {
   const theme = useMode.theme;
   const objTheme = {
     light: {
-      body: 'h-screen w-full flex flex-col bg-body-light-bg',
+      body: 'h-screen w-full flex flex-col bg-body-light-200',
     },
     dark: {
       body: 'h-screen w-full flex flex-col bg-body-dark',
