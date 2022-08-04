@@ -2,13 +2,14 @@ import React, { ReactElement } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useUser } from '../providers/UserProvider';
 
-import { Home } from '../pages/home';
+import { Login } from '../pages/login';
 import { Extract } from '../pages/extract';
 import { Transfer } from '../pages/transfer';
 import { Deposit } from '../pages/deposit';
 import { Withdraw } from '../pages/withdraw';
 import { Profile } from '../pages/profile';
 import { Transaction } from '../pages/transaction';
+import { Register } from '../pages/register';
 
 interface ChildrenTypes {
   children: ReactElement;
@@ -18,7 +19,7 @@ const Private = ({ children }: ChildrenTypes) => {
   const { user } = useUser();
 
   if (!user) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/login" />;
   }
 
   return children;
@@ -28,7 +29,7 @@ const Public = ({ children }: ChildrenTypes) => {
   const { user } = useUser();
 
   if (user) {
-    return <Navigate to="/extract" />;
+    return <Navigate to="/login" />;
   }
 
   return children;
@@ -36,13 +37,13 @@ const Public = ({ children }: ChildrenTypes) => {
 
 export const Router = () => (
   <Routes>
-    <Route path="/" element={<Navigate to="/home" />} />
+    <Route path="/" element={<Navigate to="/login" />} />
     <Route
-      path="/home"
+      path="/login"
       element={
-        <Public>
-          <Home />
-        </Public>
+        <Private>
+          <Login />
+        </Private>
       }
     />
     <Route
@@ -85,6 +86,15 @@ export const Router = () => (
         </Private>
       }
     />
+    <Route
+      path="/register"
+      element={
+        <Private>
+          <Register />
+        </Private>
+      }
+    />
+
     <Route path="/transaction/:transactionId" element={<Transaction />} />
 
     <Route path="*" element={<h1 className="text-white">Error 404</h1>} />
