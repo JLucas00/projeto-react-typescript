@@ -106,3 +106,17 @@ select {
 .input-label {
   @apply text-sm font-extralight;
 }
+
+.text-title {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.text-label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+}

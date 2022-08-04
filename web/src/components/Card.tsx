@@ -54,7 +54,7 @@ export const Card = ({ title, icon, notify, children }: cardProps) => {
           false
         )}
       </div>
-      <div className="mt-4 flex items-center justify-center">{children}</div>
+      <div className="mt-2.5 flex items-center justify-center">{children}</div>
     </div>
   );
 };
