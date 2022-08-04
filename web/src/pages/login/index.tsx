@@ -55,7 +55,12 @@ export const Login = () => {
           disabled={false}
           className="mt-5"
         />
-        <Button category="primary" label="entrar" className="mt-5" />
+        <Button
+          category="primary"
+          label="entrar"
+          className="mt-5"
+          onClick={() => console.log('click')}
+        />
         <Link to="/register">
           <button className={objTheme[theme].registerButton}>
             Crie sua conta
