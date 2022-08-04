@@ -48,19 +48,24 @@ export const Login = () => {
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Input
           placeholder="Digite sua senha"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
-        <Button
-          category="primary"
-          label="entrar"
-          className="mt-5"
-          onClick={() => console.log('click')}
-        />
+        <Link className="w-full" to="/deposit">
+          <Button
+            category="primary"
+            label="Entrar"
+            className="mt-5"
+            onClick={() => console.log('click')}
+          />
+        </Link>
+
         <Link to="/register">
           <button className={objTheme[theme].registerButton}>
             Crie sua conta

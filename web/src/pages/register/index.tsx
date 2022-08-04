@@ -34,40 +34,46 @@ export const Register = () => {
           placeholder="Digite seu nome"
           inputType="long"
           disabled={false}
+          value={''}
         />
         <Input
           placeholder="Digite sua data de nascimento"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Input
           placeholder="Digite seu CPF"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Input
           placeholder="Digite seu email"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Input
           placeholder="Digite sua senha"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Input
           placeholder="Confirme sua senha"
           inputType="long"
           disabled={false}
           className="mt-5"
+          value={''}
         />
         <Button
           category="primary"
-          label="entrar"
+          label="Cadastrar"
           className="mt-5"
           onClick={() => console.log('click')}
         />
