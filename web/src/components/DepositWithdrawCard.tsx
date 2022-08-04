@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
-import { ModeContext } from '../providers/ModeProvider';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
+import { Modal } from '../components/Modal';
+import { postWithdraw, postDeposit } from '../libs/api';
+import { Password } from 'phosphor-react';
 
 interface cardProps {
   title: string;
@@ -9,43 +11,157 @@ interface cardProps {
 }
 
 export const DepositWithdrawCard = ({ title, buttonLabel }: cardProps) => {
-  const useMode = useContext(ModeContext);
+  const [modal, setModal] = useState(false);
+  const [formData, setformData] = useState({ valor: '', senha: '' });
 
-  const theme = useMode.theme;
-  const objTheme = {
-    light: {
-      textTitle: 'text-title text-input-text mt-1.5',
+  const [depositData, setDepositData] = useState({
+    account: {
+      cpf: '12345678912',
+      agency: '5507',
+      verificationAgencyDigit: '3',
+      accountNumber: '607245',
+      verificationAccountDigit: '6',
     },
-    dark: {
-      textTitle: 'text-title text-input-base mt-1.5',
+    value: 0,
+  });
+  const [withdrawData, setwithdrawData] = useState({
+    account: {
+      cpf: '12345678912',
+      agency: '5507',
+      verificationAgencyDigit: '3',
+      accountNumber: '607245',
+      verificationAccountDigit: '6',
+      password: '',
     },
-  };
+    value: 0,
+  });
 
+  useEffect(() => {
+    setwithdrawData({ ...withdrawData, value: Number(formData.valor) });
+    setDepositData({ ...depositData, value: Number(formData.valor) });
+    console.log(withdrawData);
+    console.log(depositData);
+  }, [formData]);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value, name } = e.target;
+    setformData({ ...formData, [name]: value });
+  }
+  function handleDeposit() {
+    try {
+      postDeposit({
+        account: {
+          cpf: depositData.account.cpf,
+          agency: depositData.account.agency,
+          verificationAgencyDigit: depositData.account.verificationAgencyDigit,
+          accountNumber: depositData.account.accountNumber,
+          verificationAccountDigit:
+            depositData.account.verificationAccountDigit,
+        },
+        value: Number(formData.valor),
+      }).then((response) => {
+        console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setModal(false);
+  }
+  function handleWithdraw() {
+    try {
+      postWithdraw({
+        account: {
+          cpf: depositData.account.cpf,
+          agency: depositData.account.agency,
+          verificationAgencyDigit: depositData.account.verificationAgencyDigit,
+          accountNumber: depositData.account.accountNumber,
+          verificationAccountDigit:
+            depositData.account.verificationAccountDigit,
+          password: formData.senha,
+        },
+        value: Number(formData.valor),
+      }).then((response) => {
+        console.log(response.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    setModal(false);
+  }
   return (
     <div className="w-full flex flex-col">
-      <h1 className={objTheme[theme].textTitle}>Dados para {title}</h1>
-      <div className="flex justify-between my-2.5">
+      {modal && title === 'saque' && (
+        <Modal
+          title="Saque"
+          setModal={setModal}
+          handleConfirmModal={handleWithdraw}
+        />
+      )}
+      {modal && title === 'depósito' && (
+        <Modal
+          title="Depósito"
+          setModal={setModal}
+          handleConfirmModal={handleDeposit}
+        />
+      )}
+      <h1>Dados para {title}</h1>
+      <div className="flex justify-between mt-2">
         <div className="w-full">
-          <Input placeholder="Agência" inputType="short" disabled={true} />
-          <p className="text-label text-input-inactive">Agência</p>
+          <Input
+            placeholder="Agência"
+            inputType="short"
+            disabled={true}
+            value={
+              depositData.account.agency +
+              '-' +
+              depositData.account.verificationAgencyDigit
+            }
+          />
+          <p className="input-label">Agência</p>
         </div>
-        <div className="w-full">
-          <Input placeholder="Conta" inputType="short" disabled={true} />
-          <p className="text-label text-input-inactive">Conta</p>
+        <div>
+          <Input
+            placeholder="Conta"
+            inputType="short"
+            disabled={true}
+            value={
+              depositData.account.accountNumber +
+              '-' +
+              depositData.account.verificationAccountDigit
+            }
+          />
+          <p className="input-label">Conta</p>
         </div>
-      </div>
-
-      <div className="mt-4">
-        <Input placeholder="Valor" inputType="long" disabled={false} />
       </div>
       <div className="mt-5">
-        <Input placeholder="Senha" inputType="long" disabled={false} />
+        <Input
+          placeholder="Valor"
+          name="valor"
+          type="number"
+          inputType="long"
+          disabled={false}
+          value={formData.valor}
+          onChange={handleChange}
+        />
       </div>
-      <div className="mt-3.5">
+      <div className="mt-5">
+        <Input
+          placeholder="Senha"
+          name="senha"
+          inputType="long"
+          disabled={false}
+          type="password"
+          value={formData.senha}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="mt-5">
         <Button
           category="primary"
           label={buttonLabel}
-          onClick={() => console.log('Saque')}
+          onClick={() => {
+            setModal(true);
+          }}
         />
       </div>
     </div>

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Card } from '../../components/Card';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
-import { Proof } from '../../components/proof';
+import { Proof } from '../../components/Proof';
 import { getExtract } from '../../libs/api';
 import { ModeContext } from '../../providers/ModeProvider';
 /**
