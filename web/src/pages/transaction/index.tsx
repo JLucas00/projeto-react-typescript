@@ -1,7 +1,11 @@
+import { Bank } from 'phosphor-react';
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Card } from '../../components/Card';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
+import { Proof } from '../../components/Proof';
+import { getExtract } from '../../libs/api';
 import { ModeContext } from '../../providers/ModeProvider';
 /**
  * Archive: src/pages/Extract.tsx
@@ -25,7 +29,7 @@ const mockData = {
 export const Transaction = () => {
   // const { transactionId } = useParams<Record<string, string | undefined>>();
   // console.log(transactionId);
-  
+
   const useMode = useContext(ModeContext);
 
   const theme = useMode.theme;
@@ -43,6 +47,11 @@ export const Transaction = () => {
       <HeaderBase>
         <HeaderContent content_data={mockData} />
       </HeaderBase>
+      <div className="h-2/3 w-full mt-7 flex items-center justify-center">
+        <Card title="Extrato de transações" icon={<Bank />} notify={true}>
+          <Proof transferID=""></Proof>
+        </Card>
+      </div>
     </div>
   );
 };

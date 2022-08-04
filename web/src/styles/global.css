@@ -120,3 +120,18 @@ select {
   font-size: 11px;
   line-height: 13px;
 }
+
+.text-proof {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.text-value-green {
+  color: #53d496;
+}
+
+.text-value-red {
+  color: #FF5959;
+}

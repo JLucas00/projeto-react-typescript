@@ -15,6 +15,7 @@ import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
 import { ModeContext } from '../../providers/ModeProvider';
 import { ExtractContext } from '../../providers/ExtractProvider';
+import { Proof } from '../../components/Proof';
 
 const mockData = {
   username: 'Dhensen',
@@ -48,7 +49,7 @@ export const Extract = () => {
       </HeaderBase>
       <div className="h-2/3 w-full mt-7 flex items-center justify-center">
         <Card title="Extrato de transações" icon={<Bank />} notify={true}>
-          <ExtractCard />
+          <Proof transferID=""></Proof>
         </Card>
       </div>
     </div>

@@ -6,6 +6,7 @@ import { ModeProvider } from './providers/ModeProvider';
 import { ExtractProvider } from './providers/ExtractProvider';
 import { Router } from './routes/routes';
 import './styles/global.css';
+import { EyeProvider } from './providers/EyeProvider';
 
 /**
  * Archive: src/App.tsx
@@ -21,11 +22,13 @@ export const App = () => {
   return (
     <UserProvider>
       <ExtractProvider>
-        <ModeProvider>
-          <BrowserRouter>
-            <Router />
-          </BrowserRouter>
-        </ModeProvider>
+        <EyeProvider>
+          <ModeProvider>
+            <BrowserRouter>
+              <Router />
+            </BrowserRouter>
+          </ModeProvider>
+        </EyeProvider>
       </ExtractProvider>
     </UserProvider>
   );

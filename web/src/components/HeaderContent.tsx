@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
   UserCircle,
   ArrowsLeftRight,
@@ -7,9 +7,11 @@ import {
   UploadSimple,
   CaretDown,
   Eye,
+  EyeClosed,
 } from 'phosphor-react';
 import { Link } from 'react-router-dom';
 import { ExtractContext } from '../providers/ExtractProvider';
+import { EyeContext } from '../providers/EyeProvider';
 
 interface headerContentProps {
   content_data: {
@@ -27,6 +29,8 @@ export const HeaderContent = ({
   content_data,
   handleData,
 }: headerContentProps) => {
+  const useEye = useContext(EyeContext);
+
   return (
     <div className="w-full flex flex-col items-center">
       <div className="w-full h-min mt-5 flex justify-around text-white items-center">
@@ -75,9 +79,11 @@ export const HeaderContent = ({
           <CaretDown className="text-black" />
         </div>
         <div className="h-min flex mt-1 items-center ml-3">
-          <Eye />
+          <button onClick={useEye.change}>
+            {useEye.eye ? <Eye /> : <EyeClosed />}
+          </button>
           <h2 className="text-2xl font-bold balance-color ml-1">
-            {content_data.balance}
+            {useEye.eye ? content_data.balance : '***'}
           </h2>
           <p className="ml-1 self-end currency-color font-bold">R$</p>
         </div>
