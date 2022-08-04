@@ -5,7 +5,12 @@ import { Input } from './Input';
 import { postTransfer } from '../libs/api';
 import { Modal } from '../components/Modal';
 export const TransferCard = () => {
-  const [formData, setformData] = useState({ valor: '', senha: '' });
+  const [formData, setformData] = useState({
+    valor: '',
+    senha: '',
+    account: '',
+    agency: '',
+  });
   const [originData, setOriginData] = useState({
     account: {
       cpf: '12345678912',
@@ -45,10 +50,10 @@ export const TransferCard = () => {
       postTransfer({
         accountOrigin: {
           cpf: '12345678912',
-          agency: '5507',
-          verificationAgencyDigit: '3',
-          accountNumber: '607245',
-          verificationAccountDigit: '6',
+          agency: formData.agency.substring(0, 4),
+          verificationAgencyDigit: formData.agency.substring(5, 6),
+          accountNumber: formData.account.substring(0, 6),
+          verificationAccountDigit: formData.account.substring(7, 8),
           password: formData.senha,
         },
         accountReceiver: {
@@ -124,7 +129,9 @@ export const TransferCard = () => {
             placeholder="Agência"
             inputType="short"
             disabled={false}
-            value={''}
+            name="agency"
+            value={formData.agency}
+            onChange={handleChange}
           />
           <p className="text-label text-input-inactive">Agência</p>
         </div>
@@ -133,7 +140,9 @@ export const TransferCard = () => {
             placeholder="Conta"
             inputType="short"
             disabled={false}
-            value={''}
+            name="account"
+            value={formData.account}
+            onChange={handleChange}
           />
           <p className="text-label text-input-inactive">Conta</p>
         </div>
