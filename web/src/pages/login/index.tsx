@@ -5,6 +5,7 @@ import { ModeContext } from '../../providers/ModeProvider';
 
 import { useUser } from '../../providers/UserProvider';
 import { Button } from '../../components/Button';
+import { Link } from 'react-router-dom';
 /**
  * Archive: src/pages/Home.tsx
  *
@@ -55,9 +56,11 @@ export const Login = () => {
           className="mt-5"
         />
         <Button category="primary" label="entrar" className="mt-5" />
-        <button className={objTheme[theme].registerButton}>
-          Crie sua conta
-        </button>
+        <Link to="/register">
+          <button className={objTheme[theme].registerButton}>
+            Crie sua conta
+          </button>
+        </Link>
       </div>
     </div>
   );

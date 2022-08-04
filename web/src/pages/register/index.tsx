@@ -3,6 +3,7 @@ import { ModeContext } from '../../providers/ModeProvider';
 import logoSvg from '../../assets/logo.svg';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+import { Link } from 'react-router-dom';
 
 export const Register = () => {
   const useMode = useContext(ModeContext);
@@ -65,7 +66,9 @@ export const Register = () => {
           className="mt-5"
         />
         <Button category="primary" label="entrar" className="mt-5" />
-        <button className={objTheme[theme].registerButton}>Entrar</button>
+        <Link to="/login">
+          <button className={objTheme[theme].registerButton}>Entrar</button>
+        </Link>
       </div>
     </div>
   );
