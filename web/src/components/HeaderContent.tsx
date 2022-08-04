@@ -9,6 +9,7 @@ import {
   Eye,
 } from 'phosphor-react';
 import { Link } from 'react-router-dom';
+import { ExtractContext } from '../providers/ExtractProvider';
 
 interface headerContentProps {
   content_data: {
@@ -34,10 +35,9 @@ export const HeaderContent = ({
           <UserCircle className="w-7 h-7" />
         </Link>
       </div>
-
       <div className="w-3/4 flex justify-around mt-5">
-        <div className="flex flex-col items-center" onClick={handleData}>
-          <Link to="/extract" className="header-button">
+        <div className="flex flex-col items-center">
+          <Link to="/extract" onClick={handleData} className="header-button">
             <Bank className="w-8 h-8" />
           </Link>
           <h3 className="text-xs text-white mt-1">Extrato</h3>

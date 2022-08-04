@@ -14,7 +14,7 @@ import { ExtractCard } from '../../components/ExtractCard';
 import { HeaderBase } from '../../components/HeaderBase';
 import { HeaderContent } from '../../components/HeaderContent';
 import { ModeContext } from '../../providers/ModeProvider';
-import { getExtract } from '../../libs/api';
+import { ExtractContext } from '../../providers/ExtractProvider';
 
 const mockData = {
   username: 'Dhensen',
@@ -26,8 +26,8 @@ const mockData = {
 };
 
 export const Extract = () => {
+  const useExtract = useContext(ExtractContext);
   const useMode = useContext(ModeContext);
-
   const theme = useMode.theme;
   const objTheme = {
     light: {
@@ -37,24 +37,14 @@ export const Extract = () => {
       body: 'h-screen w-full flex flex-col bg-body-dark',
     },
   };
-  function handleExtract() {
-    try {
-      getExtract({
-        cpf: '12345678912',
-        agency: '5507',
-        verificationAgencyDigit: '3',
-        accountNumber: '607245',
-        verificationAccountDigit: '6',
-      }).then((response) => console.log(response.data.data.transations));
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   return (
     <div className={objTheme[theme].body}>
       <HeaderBase>
-        <HeaderContent content_data={mockData} handleData={handleExtract} />
+        <HeaderContent
+          content_data={mockData}
+          handleData={useExtract.handleExtract}
+        />
       </HeaderBase>
       <div className="h-2/3 w-full mt-7 flex items-center justify-center">
         <Card title="Extrato de transações" icon={<Bank />} notify={true}>
