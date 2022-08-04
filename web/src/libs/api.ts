@@ -65,14 +65,14 @@ export async function postTransfer(body: TransferRequest) {
   return await api.post('create-transfer', body);
 }
 
-interface WithdrawRequest {
+interface AccountRequest {
   name: string;
   email: string;
   cpf: string;
   password: string;
   birthdate: string;
 }
-export async function postAccount(body: WithdrawRequest) {
+export async function postAccount(body: AccountRequest) {
   return await api.post('create-withdraw', body);
 }
 

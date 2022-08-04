@@ -3,6 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { UserProvider } from './providers/UserProvider';
 import { ModeProvider } from './providers/ModeProvider';
+import { ExtractProvider } from './providers/ExtractProvider';
 import { Router } from './routes/routes';
 import './styles/global.css';
 
@@ -19,11 +20,13 @@ import './styles/global.css';
 export const App = () => {
   return (
     <UserProvider>
-      <ModeProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
-      </ModeProvider>
+      <ExtractProvider>
+        <ModeProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </ModeProvider>
+      </ExtractProvider>
     </UserProvider>
   );
 };
