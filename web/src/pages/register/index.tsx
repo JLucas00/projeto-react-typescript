@@ -65,7 +65,12 @@ export const Register = () => {
           disabled={false}
           className="mt-5"
         />
-        <Button category="primary" label="entrar" className="mt-5" />
+        <Button
+          category="primary"
+          label="entrar"
+          className="mt-5"
+          onClick={() => console.log('click')}
+        />
         <Link to="/login">
           <button className={objTheme[theme].registerButton}>Entrar</button>
         </Link>
