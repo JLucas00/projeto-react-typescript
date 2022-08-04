@@ -1,7 +1,22 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { ModeContext } from '../providers/ModeProvider';
 
-export const ExtractCard = () => {
+interface ExtractProps {
+  transferDate: string;
+  transferType: string;
+  transferValue: number;
+  transferSign: string;
+  transferColor: string;
+}
+
+export const ExtractCard = ({
+  transferDate,
+  transferType,
+  transferValue,
+  transferSign,
+  transferColor,
+}: ExtractProps) => {
   const useMode = useContext(ModeContext);
 
   const theme = useMode.theme;
@@ -17,5 +32,11 @@ export const ExtractCard = () => {
     },
   };
 
-  return <div className={objTheme[theme].extract}></div>;
+  return (
+    <div className={objTheme[theme].extract}>
+      <div className="flex flex-col items-center">
+        <h3 className="w-full extract-date-color">{transferDate}</h3>
+      </div>
+    </div>
+  );
 };

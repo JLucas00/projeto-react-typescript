@@ -120,3 +120,19 @@ select {
   font-size: 11px;
   line-height: 13px;
 }
+
+.extract-date-color {
+  color: #727272;
+}
+
+.extract-text-color {
+  color: #a8a8a8;
+}
+
+.extract-fee-color {
+  color: #ff5959;
+}
+
+.extract-income-color {
+  color: #53d496;
+}
