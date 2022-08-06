@@ -18,11 +18,11 @@ import { Link } from 'react-router-dom';
  */
 
 export const Login = () => {
-
   const objTheme = {
-      body: 'h-screen w-full flex flex-col items-center bg-body-light-bg dark:bg-body-dark',
-      textColorLogin: 'text-2xl text-paragraph-dark dark:text-header-light',
-      registerButton: 'mt-2 text-paragraph-light-200 dark:text-paragraph-light-100',
+    body: 'h-screen w-full flex flex-col items-center bg-body-light-bg dark:bg-body-dark',
+    textColorLogin: 'text-2xl text-paragraph-dark dark:text-header-light',
+    registerButton:
+      'mt-2 text-paragraph-light-200 dark:text-paragraph-light-100',
   };
 
   return (
@@ -61,9 +61,7 @@ export const Login = () => {
         </Link>
 
         <Link to="/register">
-          <button className={objTheme.registerButton}>
-            Crie sua conta
-          </button>
+          <button className={objTheme.registerButton}>Crie sua conta</button>
         </Link>
       </div>
     </div>
