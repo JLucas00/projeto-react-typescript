@@ -5,3 +5,4 @@ export { CreateWithDrawService } from "./createWithdraw";
 export { GetExtractService } from "./getExtract";
 export { GetProfileService } from "./getProfile";
 export { GetProofService } from "./getProof";
+export { LoginService } from "./login";

@@ -7,3 +7,4 @@ export { default as DepositBody } from "./depositBody";
 export { default as WithdrawBody } from "./withdrawBody";
 export { default as TransferBody } from "./transferBody";
 export { default as TransationId } from "./transationId";
+export { default as Login } from "./login";

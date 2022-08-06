@@ -127,6 +127,28 @@ class AccountsTable extends PostgresDB {
       throw new Error("503: service temporarily unavailable");
     }
   }
+  public async selectforUserId(id: string): Promise<any> {
+    try {
+      this.client.connect();
+
+      const selectUserQuery = `
+        SELECT * FROM accounts WHERE user_id = $1
+    `;
+
+      const result = await this.client.query(selectUserQuery, [id]);
+
+      this.client.end();
+
+      if (result.rows.length !== 0) {
+        return result.rows;
+      }
+
+      return null;
+    } catch (error) {
+      this.client.end();
+      throw new Error("503: service temporarily unavailable");
+    }
+  }
   public async updateBalance(
     accountOrigin: string,
     newBalance: number

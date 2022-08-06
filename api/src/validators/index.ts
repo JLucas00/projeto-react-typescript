@@ -17,3 +17,4 @@ export { DepositBodyValidator } from "./depositBody";
 export { WithdrawBodyValidator } from "./withdrawBody";
 export { TransferBodyValidator } from "./transferBody";
 export { TransationIdValidator } from "./transationId";
+export { LoginValidator } from "./login";

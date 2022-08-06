@@ -86,6 +86,13 @@ interface ProfileRequest {
 export async function getProfile(body: ProfileRequest) {
   return await api.post('get-profile', body);
 }
+interface LoginRequest {
+  cpf: string;
+  password: string;
+}
+export async function getLogin(body: LoginRequest) {
+  return await api.post('login', body);
+}
 
 interface ProofRequest {
   id: string;
