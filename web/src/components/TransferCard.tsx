@@ -6,6 +6,7 @@ import { postTransfer } from '../libs/api';
 import { Modal } from '../components/Modal';
 export const TransferCard = () => {
   const [formData, setformData] = useState({
+    cpf: '',
     valor: '',
     senha: '',
     account: '',
@@ -37,8 +38,7 @@ export const TransferCard = () => {
   useEffect(() => {
     setOriginData({ ...originData, value: Number(formData.valor) });
     setDestinationData({ ...destinationData, value: Number(formData.valor) });
-    console.log(originData);
-    console.log(destinationData);
+    console.log(formData);
   }, [formData]);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -49,19 +49,19 @@ export const TransferCard = () => {
     try {
       postTransfer({
         accountOrigin: {
-          cpf: '12345678912',
+          cpf: originData.account.cpf,
+          agency: originData.account.agency,
+          verificationAgencyDigit: originData.account.verificationAgencyDigit,
+          accountNumber: originData.account.accountNumber,
+          verificationAccountDigit: originData.account.verificationAccountDigit,
+          password: formData.senha,
+        },
+        accountReceiver: {
+          cpf: formData.cpf,
           agency: formData.agency.substring(0, 4),
           verificationAgencyDigit: formData.agency.substring(5, 6),
           accountNumber: formData.account.substring(0, 6),
           verificationAccountDigit: formData.account.substring(7, 8),
-          password: formData.senha,
-        },
-        accountReceiver: {
-          cpf: '47301043821',
-          agency: '8529',
-          verificationAgencyDigit: '5',
-          accountNumber: '644553',
-          verificationAccountDigit: '6',
         },
         value: Number(formData.valor),
       }).then((response) => {
@@ -87,13 +87,13 @@ export const TransferCard = () => {
     <div className="w-full flex flex-col">
       {modal && (
         <Modal
-          title="Saque"
+          title="Transferência"
           setModal={setModal}
           handleConfirmModal={handleTranfer}
         />
       )}
       <h1 className={objTheme[theme].textTitle}>Origem</h1>
-      <div className="flex justify-between my-2.5">
+      <div className="flex justify-between">
         <div className="w-full ">
           <Input
             placeholder="Agência"
@@ -123,7 +123,7 @@ export const TransferCard = () => {
       </div>
 
       <h1 className={objTheme[theme].textTitle}>Destino</h1>
-      <div className="flex justify-between my-1.5">
+      <div className="flex justify-between ">
         <div className="w-full">
           <Input
             placeholder="Agência"
@@ -148,6 +148,16 @@ export const TransferCard = () => {
         </div>
       </div>
 
+      <div className="mt-2.5 mb-2.5">
+        <Input
+          placeholder="Cpf de destino"
+          inputType="long"
+          name="cpf"
+          disabled={false}
+          value={formData.cpf}
+          onChange={handleChange}
+        />
+      </div>
       <div className="mt-2.5">
         <Input
           placeholder="Valor"

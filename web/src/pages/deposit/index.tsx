@@ -21,20 +21,6 @@ import { ModeContext } from '../../providers/ModeProvider';
 export const Deposit = () => {
   const [modal, setModal] = useState(false);
 
-  function handleDeposit() {
-    try {
-      getExtract({
-        cpf: '12345678912',
-        agency: '5507',
-        verificationAgencyDigit: '3',
-        accountNumber: '607245',
-        verificationAccountDigit: '6',
-      }).then((response) => console.log(response.data.data.transations));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   const mockData = {
     username: 'Dhensen',
     agency_number: '1510',

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Input } from '../../components/Input';
 import logoSvg from '../../assets/logo.svg';
 import { ModeContext } from '../../providers/ModeProvider';
-
+import { getLogin } from '../../libs/api';
 import { useUser } from '../../providers/UserProvider';
 import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,29 @@ import { Link } from 'react-router-dom';
  */
 
 export const Login = () => {
+  const [formData, setformData] = useState({ cpf: '', senha: '' });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value, name } = e.target;
+    setformData({ ...formData, [name]: value });
+    console.log(formData);
+  }
+
+  function handleLogin() {
+    try {
+      getLogin({
+        cpf: formData.cpf,
+        password: formData.senha,
+      }).then((response) => console.log(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const objTheme = {
     body: 'h-screen w-full flex flex-col items-center bg-body-light-bg dark:bg-body-dark',
     textColorLogin: 'text-2xl text-paragraph-dark dark:text-header-light',
@@ -41,14 +64,19 @@ export const Login = () => {
           inputType="long"
           disabled={false}
           className="mt-6"
-          value={''}
+          name="cpf"
+          value={formData.cpf}
+          onChange={handleChange}
         />
         <Input
           placeholder="Digite sua senha"
           inputType="long"
           disabled={false}
           className="mt-5"
-          value={''}
+          type="password"
+          name="senha"
+          value={formData.senha}
+          onChange={handleChange}
         />
 
         <Link className="w-full" to="/deposit">
@@ -56,7 +84,7 @@ export const Login = () => {
             category="primary"
             label="Entrar"
             className="mt-6"
-            onClick={() => console.log('click')}
+            onClick={handleLogin}
           />
         </Link>
 
