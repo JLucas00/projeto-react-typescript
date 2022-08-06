@@ -1,11 +1,44 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ModeContext } from '../../providers/ModeProvider';
 import logoSvg from '../../assets/logo.svg';
+import { createAccount } from '../../libs/api';
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
 
 export const Register = () => {
+  const [formData, setformData] = useState({
+    nome: '',
+    data: '',
+    cpf: '',
+    email: '',
+    senha: '',
+    confirmSenha: '',
+  });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { value, name } = e.target;
+    setformData({ ...formData, [name]: value });
+    console.log(formData);
+  }
+
+  function handleCreateAccount() {
+    try {
+      createAccount({
+        name: formData.cpf,
+        email: formData.email,
+        cpf: formData.cpf,
+        password: formData.senha,
+        birthdate: formData.data,
+      }).then((response) => console.log(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const objTheme = {
     body: 'h-screen w-full flex flex-col items-center bg-body-light-bg dark:bg-body-dark',
     textColorLogin: 'mt-3 text-2xl text-paragraph-dark dark:text-header-light',
@@ -25,44 +58,49 @@ export const Register = () => {
           placeholder="Digite seu nome"
           inputType="long"
           disabled={false}
-          value={''}
+          value={formData.nome}
         />
         <Input
           placeholder="Digite sua data de nascimento"
           inputType="long"
           disabled={false}
-          value={''}
+          type="date"
+          value={formData.data}
         />
         <Input
           placeholder="Digite seu CPF"
           inputType="long"
           disabled={false}
-          value={''}
+          value={formData.cpf}
         />
         <Input
           placeholder="Digite seu email"
           inputType="long"
           disabled={false}
-          value={''}
+          value={formData.email}
         />
         <Input
           placeholder="Digite sua senha"
           inputType="long"
           disabled={false}
-          value={''}
+          value={formData.senha}
         />
         <Input
           placeholder="Confirme sua senha"
           inputType="long"
           disabled={false}
-          value={''}
+          value={formData.confirmSenha}
         />
 
         <div className="w-full mt-1 flex flex-col items-center">
           <Button
             category="primary"
             label="Cadastrar"
-            onClick={() => console.log('click')}
+            onClick={() =>
+              formData.senha === formData.confirmSenha
+                ? handleCreateAccount()
+                : console.log('escreva a mesma senha')
+            }
           />
           <Link to="/login">
             <button className={objTheme.registerButton}>Entrar</button>

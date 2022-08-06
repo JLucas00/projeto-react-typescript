@@ -94,6 +94,17 @@ export async function getLogin(body: LoginRequest) {
   return await api.post('login', body);
 }
 
+interface CreateAccountRequest {
+  name: string;
+  email: string;
+  cpf: string;
+  password: string;
+  birthdate: string;
+}
+export async function createAccount(body: CreateAccountRequest) {
+  return await api.post('create-account', body);
+}
+
 interface ProofRequest {
   id: string;
 }
