@@ -37,7 +37,8 @@ const UserList = ({ users, query }: any) => {
  *
  * Date: 22/17/07
  *
- * Author: Rey
+ * Author: Augusto, João e Yeté
+
  */
 
 export const UseMemoComponent = () => {
