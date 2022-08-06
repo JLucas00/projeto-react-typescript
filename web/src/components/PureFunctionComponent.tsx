@@ -5,7 +5,8 @@
  *
  * Date: 22/17/07
  *
- * Author: Rey
+ * Author: Augusto, João e Yeté
+
  */
 import React from 'react';
 export const PureFunctionComponent = () => {

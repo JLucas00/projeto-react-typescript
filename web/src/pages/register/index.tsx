@@ -6,30 +6,21 @@ import { Button } from '../../components/Button';
 import { Link } from 'react-router-dom';
 
 export const Register = () => {
-  const useMode = useContext(ModeContext);
-
-  const theme = useMode.theme;
   const objTheme = {
-    light: {
-      body: 'h-screen w-full flex flex-col items-center',
-      textColor: 'mt-4 text-xl',
-      registerButton: 'mt-2',
-    },
-    dark: {
-      body: 'h-screen w-full flex flex-col items-center bg-body-dark',
-      textColor: 'mt-4 text-xl text-white',
-      registerButton: 'mt-2 text-white',
-    },
+    body: 'h-screen w-full flex flex-col items-center bg-body-light-bg dark:bg-body-dark',
+    textColorLogin: 'mt-3 text-2xl text-paragraph-dark dark:text-header-light',
+    registerButton:
+      'mt-1.5 text-paragraph-light-200 dark:text-paragraph-light-100',
   };
 
   return (
-    <div className={objTheme[theme].body}>
+    <div className={objTheme.body}>
       <div className="w-full h-1/3 flex flex-col items-center justify-center">
         <img src={logoSvg} className="w-16" />
-        <h1 className="mt-2 balance-color font-semibold">Alpha Bunker</h1>
-        <h2 className={objTheme[theme].textColor}>Crie sua conta</h2>
+        <h1 className="mt-3.5 balance-color font-semibold">Alpha Bunker</h1>
+        <h2 className={objTheme.textColorLogin}>Crie sua conta</h2>
       </div>
-      <div className="w-9/12 flex flex-col items-center">
+      <div className="w-full px-14 flex flex-col items-center gap-y-5">
         <Input
           placeholder="Digite seu nome"
           inputType="long"
@@ -40,46 +31,43 @@ export const Register = () => {
           placeholder="Digite sua data de nascimento"
           inputType="long"
           disabled={false}
-          className="mt-5"
           value={''}
         />
         <Input
           placeholder="Digite seu CPF"
           inputType="long"
           disabled={false}
-          className="mt-5"
           value={''}
         />
         <Input
           placeholder="Digite seu email"
           inputType="long"
           disabled={false}
-          className="mt-5"
           value={''}
         />
         <Input
           placeholder="Digite sua senha"
           inputType="long"
           disabled={false}
-          className="mt-5"
           value={''}
         />
         <Input
           placeholder="Confirme sua senha"
           inputType="long"
           disabled={false}
-          className="mt-5"
           value={''}
         />
-        <Button
-          category="primary"
-          label="Cadastrar"
-          className="mt-5"
-          onClick={() => console.log('click')}
-        />
-        <Link to="/login">
-          <button className={objTheme[theme].registerButton}>Entrar</button>
-        </Link>
+
+        <div className="w-full mt-1 flex flex-col items-center">
+          <Button
+            category="primary"
+            label="Cadastrar"
+            onClick={() => console.log('click')}
+          />
+          <Link to="/login">
+            <button className={objTheme.registerButton}>Entrar</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

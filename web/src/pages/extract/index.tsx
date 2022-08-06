@@ -3,9 +3,10 @@
  *
  * Description: Extract page
  *
- * Date: 2022/07/20
+ * Date: 2022/08/05
  *
- * Author: Rey
+ * Author: Augusto, João e Yeté
+
  */
 import { Bank } from 'phosphor-react';
 import React, { useContext } from 'react';

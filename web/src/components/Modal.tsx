@@ -13,9 +13,10 @@ interface PropTypes {
  *
  * Description: Modal component
  *
- * Date: 2022/07/22
+ * Date: 2022/08/05
  *
- * Author: Rey
+ * Author: Augusto, João e Yeté
+
  */
 
 export const Modal = ({ title, handleConfirmModal, setModal }: PropTypes) => {

@@ -29,7 +29,7 @@ const Public = ({ children }: ChildrenTypes) => {
   const { user } = useUser();
 
   if (user) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/extract" />;
   }
 
   return children;

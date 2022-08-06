@@ -12,9 +12,10 @@ import { ModeContext } from '../../providers/ModeProvider';
  *
  * Description: Extract page
  *
- * Date: 2022/07/20
+ * Date: 2022/08/05
  *
- * Author: Rey
+ * Author: Augusto, João e Yeté
+
  */
 
 const mockData = {
